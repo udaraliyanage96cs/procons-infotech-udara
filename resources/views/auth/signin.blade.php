@@ -3,47 +3,8 @@
 <html lang="en" class="light-style customizer-hide" dir="ltr" data-theme="theme-default"
     data-assets-path="../../assets/" data-template="vertical-menu-template">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+@include('partials.head')
 
-    <title>Procons Infotech</title>
-
-    <meta name="description" content="" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet" />
-
-    <link rel="stylesheet" href="{{ asset('../../assets/vendor/fonts/boxicons.css') }} " />
-
-    <link rel="stylesheet" href="{{ asset('../../assets/vendor/fonts/fontawesome.css') }} " />
-    <link rel="stylesheet" href="{{ asset('../../assets/vendor/fonts/flag-icons.css') }} " />
-
-    <link rel="stylesheet" href="{{ asset('../../assets/vendor/css/rtl/core.css') }} "
-        class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('../../assets/vendor/css/rtl/theme-default.css') }} "
-        class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{ asset('../../assets/css/demo.css') }} " />
-
-    <link rel="stylesheet" href="{{ asset('../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }} " />
-    <link rel="stylesheet" href="{{ asset('../../assets/vendor/libs/typeahead-js/typeahead.css') }} " />
-    <link rel="stylesheet"
-        href="{{ asset('../../assets/vendor/libs/formvalidation/dist/css/formValidation.min.css') }} " />
-
-
-    <link rel="stylesheet" href="{{ asset('../../assets/vendor/css/pages/page-auth.css') }} " />
-
-    <script src="{{ asset('../../assets/vendor/js/helpers.js') }} "></script>
-    <script src="{{ asset('../../assets/vendor/js/template-customizer.js') }} "></script>
-    <script src="{{ asset('../../assets/js/config.js') }} "></script>
-</head>
 
 <body>
     <!-- Content -->
@@ -57,49 +18,52 @@
                         width="520" class="img-fluid authentication-cover-img"
                         data-app-light-img="pages/login-light.png" data-app-dark-img="pages/login-dark.png" />
                     <div class="mx-auto">
-                        <h3>Discover the powerful admin template 🥳</h3>
+                        <h3>EcoWatch Lets Protect Envirenment 🥳</h3>
                         <p>
-                            Perfectly suited for all level of developers which helps you to <br />
-                            kick start your next big projects & Applications.
+                            EcoWatch empowers nature enthusiasts to report sightings of <br/>endangered plants, enabling a
+                            collaborative effort to protect and conserve at-risk species.
                         </p>
                     </div>
                 </div>
             </div>
             <!-- /Left Text -->
-            
+
             <!-- Login -->
             <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 p-4">
                 <div class="w-px-400 mx-auto">
                     <!-- Logo -->
                     @if ($errors->any())
-                        @if(implode('', $errors->all(':message')) == 'not-verified')
-                            <div class="bs-toast toast fade show mb-4 w-100" role="alert" aria-live="assertive" aria-atomic="true"
-                                id="success-alert">
+                        @if (implode('', $errors->all(':message')) == 'not-verified')
+                            <div class="bs-toast toast fade show mb-4 w-100" role="alert" aria-live="assertive"
+                                aria-atomic="true" id="success-alert">
                                 <div class="toast-header bg-danger">
                                     <div class="me-auto fw-semibold">Alerts</div>
-                                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="toast"
+                                        aria-label="Close"></button>
                                 </div>
                                 <div class="toast-body">Please Verify Your Email Address</div>
                             </div>
                         @elseif(implode('', $errors->all(':message')) == 'faild')
-                            <div class="bs-toast toast fade show mb-4 w-100" role="alert" aria-live="assertive" aria-atomic="true"
-                                id="success-alert">
+                            <div class="bs-toast toast fade show mb-4 w-100" role="alert" aria-live="assertive"
+                                aria-atomic="true" id="success-alert">
                                 <div class="toast-header bg-danger">
                                     <div class="me-auto fw-semibold">Alerts</div>
-                                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="toast"
+                                        aria-label="Close"></button>
                                 </div>
-                                <div class="toast-body">Email or Password is Incorrect. Please Try Again With Correct Login Details</div>
+                                <div class="toast-body">Email or Password is Incorrect. Please Try Again With Correct
+                                    Login Details</div>
                             </div>
                         @endif
                     @endif
 
                     <div class="app-brand mb-4">
                         <a href="/" class="app-brand-link gap-2 mb-2">
-                            <span class="app-brand-text demo h3 mb-0 fw-bold">Procons Infotech</span>
+                            <span class="app-brand-text demo h3 mb-0 fw-bold">Eco Track</span>
                         </a>
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-2">Welcome to Procons Infotech! 👋</h4>
+                    <h4 class="mb-2">Welcome to Eco Track! 👋</h4>
                     <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
                     <form id="formAuthentication" class="mb-3" action="/signin" method="POST">

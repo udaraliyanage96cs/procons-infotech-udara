@@ -45,11 +45,11 @@
   }
 
   // CVV
-  if (cvvMask.length) {
-    new Cleave(cvvMask, {
-      numeral: true
-    });
-  }
+  // if (cvvMask.length) {
+  //   new Cleave(cvvMask, {
+  //     numeral: true
+  //   });
+  // }
 
   // Flat Picker Birth Date
   if (datepickerList) {

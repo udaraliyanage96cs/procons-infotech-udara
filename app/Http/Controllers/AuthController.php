@@ -66,11 +66,15 @@ class AuthController extends Controller
             'password'  => $req->password
         );
         if (Auth::attempt($userdata)) {
-            if (Auth::user()->email_verified_at) {
+            if(Auth::user()->role == "admin"){
                 return redirect("/dashboard");
             }else{
-                Auth::logout();
-                return back()->withErrors(['message' => 'not-verified']);
+                if (Auth::user()->email_verified_at) {
+                    return redirect("/dashboard");
+                }else{
+                    Auth::logout();
+                    return back()->withErrors(['message' => 'not-verified']);
+                }
             }
         } else {        
             return back()->withErrors(['message' => 'faild']);

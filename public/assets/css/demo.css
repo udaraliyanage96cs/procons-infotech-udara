@@ -237,3 +237,37 @@
 .mainlinks{
   background-color: unset !important;
 }
+
+.alartbox{
+  display: flex;
+  justify-content: end;
+}
+
+.alartbox #success-alert{
+  margin-bottom: 20px;
+}
+
+.pr-0{
+  padding-right: 0 !important;
+}
+
+.plant-img{
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+#imagePreview{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+.modal_image{
+  display: flex;
+  justify-content: center;
+}
+
+.modal_image img{
+  width: 200px;
+  height: 200px;
+}

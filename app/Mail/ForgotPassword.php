@@ -30,7 +30,7 @@ class ForgotPassword extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('admin@udarax.me', 'Procons Infortech Udara'),
+            from: new Address('test@udarax.me', 'Procons Infortech Udara'),
             subject: 'Forgot Password',
         );
     }

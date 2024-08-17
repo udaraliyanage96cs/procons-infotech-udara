@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Mail From Procons Infotech Udara</title>
+        <title>Mail From Eco Track Udara</title>
     </head>
     <body>
         <h1>Email Verfication</h1>

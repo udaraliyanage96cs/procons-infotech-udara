@@ -39,9 +39,6 @@ class RouteController extends Controller
         return view("info.emailverified");
     }
     
-    
-
-    
     public function forgot_password_view(Request $req){
         return view("auth.forgotpwd");
     }
@@ -61,4 +58,23 @@ class RouteController extends Controller
             return view("auth.resetpassword")->with("user_id",$req->id);
         }
     }
+
+    public function dashboard_reports_view(Request $req){
+        return view("dashboard")->with("page","Reports");
+    }
+
+    public function dashboard_reports_add_view(Request $req){
+        return view("dashboard")->with("page","ReportsAdd");
+    }
+
+    public function dashboard_reports_edit_view(Request $req){
+        return view("dashboard")->with("page","ReportsEdit")->with("reportID",$req->id);
+    }
+
+    
+
+    
+
+
+    
 }

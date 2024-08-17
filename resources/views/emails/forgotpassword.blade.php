@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Mail From Procons Infotech</title>
+        <title>Mail From Eco Track</title>
     </head>
     <body>
         <h1>Email Reset Password</h1>

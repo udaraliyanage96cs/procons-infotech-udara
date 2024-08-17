@@ -17,7 +17,8 @@ return new class extends Migration
             $table->decimal('latitude', 10, 7);
             $table->decimal('longitude', 10, 7);
             $table->text('description')->nullable();
-            $table->string('photo')->nullable();
+            $table->string('photo')->default('defimage.png')->nullable();
+            $table->string('status')->default(0)->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
