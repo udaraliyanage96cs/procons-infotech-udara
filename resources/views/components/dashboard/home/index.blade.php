@@ -54,6 +54,7 @@
     <script>
         var map;
         var markers = [];
+        var bounds = new google.maps.LatLngBounds();
 
         function initMap() {
             var defaultLocation = {
@@ -77,17 +78,22 @@
             });
             markers = [];
 
+            // Clear bounds
+            bounds = new google.maps.LatLngBounds();
+
             // Add new markers
             locations.forEach(function(location) {
+                var position = {
+                    lat: parseFloat(location.latitude),
+                    lng: parseFloat(location.longitude)
+                };
                 var marker = new google.maps.Marker({
-                    position: {
-                        lat: parseFloat(location.latitude),
-                        lng: parseFloat(location.longitude)
-                    },
+                    position: position,
                     map: map,
                     title: location.plant_name
                 });
                 markers.push(marker);
+                bounds.extend(position); // Extend bounds to include the new marker
                 marker.addListener('click', function() {
                     var imageUrl = location.photo === 'defimage.png' ?
                         '{{ asset('../../assets/img/defimage.png') }}' : '{{ asset('storage/reports') }}/' +
@@ -103,8 +109,10 @@
                     myModal.show();
                 });
             });
-        }
 
+            // Adjust the map view to fit the markers
+            map.fitBounds(bounds);
+        }
 
         function isValidLatitude(latitude) {
             return latitude >= -90 && latitude <= 90;
@@ -126,10 +134,17 @@
     <script>
         $('#filter-btn').on('click', function(e) {
             e.preventDefault();
-            var latitude = $('#latitude').val();
-            var longitude = $('#longitude').val();
+            var latitude = $('#latitude').val().trim();
+            var longitude = $('#longitude').val().trim();
             var radius = $('#radius').val();
 
+
+            if (!latitude || !longitude) {
+                alert('Please enter both latitude and longitude.');
+                return;
+            }
+
+            // Validate latitude and longitude
             if (!isValidLatitude(latitude)) {
                 alert('Please enter a valid latitude between -90 and 90.');
                 return;
@@ -140,11 +155,13 @@
                 return;
             }
 
-            if (!isValidRadius(radius)) {
+            // Validate radius
+            if (!radius || !isValidRadius(radius)) {
                 alert('Please enter a valid radius greater than 0.');
                 return;
             }
 
+            
             $.ajax({
                 url: '/dashboard/reports/filter',
                 method: 'POST',
@@ -156,7 +173,7 @@
                 },
                 success: function(response) {
                     console.log(response);
-                    addMarkers(response.reports);
+                    addMarkers(response.reports); // Update markers and map view
                 },
                 error: function(xhr) {
                     console.log(xhr.responseText);

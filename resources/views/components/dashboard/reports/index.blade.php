@@ -270,10 +270,18 @@
 
     $('#filter-btn').on('click', function(e) {
         e.preventDefault();
-        var latitude = $('#latitude').val();
-        var longitude = $('#longitude').val();
+
+        var latitude = $('#latitude').val().trim();
+        var longitude = $('#longitude').val().trim();
         var radius = $('#radius').val();
 
+
+        if (!latitude || !longitude) {
+            alert('Please enter both latitude and longitude.');
+            return;
+        }
+
+        // Validate latitude and longitude
         if (!isValidLatitude(latitude)) {
             alert('Please enter a valid latitude between -90 and 90.');
             return;
@@ -284,7 +292,8 @@
             return;
         }
 
-        if (!isValidRadius(radius)) {
+        // Validate radius
+        if (!radius || !isValidRadius(radius)) {
             alert('Please enter a valid radius greater than 0.');
             return;
         }
