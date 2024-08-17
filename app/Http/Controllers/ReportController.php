@@ -46,6 +46,9 @@ class ReportController extends Controller
         if (!$report) {
             return back()->withErrors(['message' => 'not_found']);
         }
+        if($report->user_id != Auth::User()->id){
+            return redirect('/noaccess');
+        }
         $report->delete();
         return back()->withErrors(['message' => 'deleted']);
     }
